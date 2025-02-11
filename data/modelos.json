@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "nombre": "Gol Trend 1.6",
+        "marca": "Volkswagen",
+        "kilometros": "180.000 Km",
+        "color": "Gris topo",
+        "combustible": "Nafta",
+        "transmision": "Manual",
+        "precio": 3000,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/gol.jpg"
+       },
+       {
+        "id": 2,
+        "nombre": "Peugeot 208 1.6",
+        "marca": "Peugeot",
+        "kilometros": "500 Km",
+        "color": "Azul eléctrico",
+        "combustible": "Nafta",
+        "transmision": "Automático",
+        "precio": 4500,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/208.jpeg"
+       },
+       {
+        "id": 3,
+        "nombre": "Fiat Cronos 1.3",
+        "marca": "Fiat",
+        "kilometros": "100.500 Km",
+        "color": "Gris claro",
+        "combustible": "Nafta",
+        "transmision": "Manual",
+        "precio": 5250000,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/cronos.jpg"
+       },
+       {
+        "id": 4,
+        "nombre": "Changan MD201",
+        "marca": "Changan",
+        "kilometros": "30.000 Km",
+        "color": "Blanco",
+        "combustible": "Nafta",
+        "transmision": "Manual",
+        "precio": 16000000,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Vehículos utilitarios",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/utilitario.jpg"
+       },
+       {
+        "id": 5,
+        "nombre": "Nissan Kicks 1.6",
+        "marca": "Nissan",
+        "kilometros": "0 Km",
+        "color": "Gris claro",
+        "combustible": "Nafta",
+        "transmision": "Automático",
+        "precio": 32000,
+        "stock": 5,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Nuevos"
+        },
+        "imagen": "/img/kicks.jpg"
+       },
+       {
+        "id": 6,
+        "nombre": "Fiat Palio 1.4",
+        "marca": "Fiat",
+        "kilometros": "210.500 Km",
+        "color": "Gris",
+        "combustible": "GNC",
+        "transmision": "Manual",
+        "precio": 2500000,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/palio.jpg"
+       },
+       {
+        "id": 7,
+        "nombre": "VW Suran 1.6",
+        "marca": "Volkswagen",
+        "kilometros": "150.250 Km",
+        "color": "Azul oscuro",
+        "combustible": "GNC",
+        "transmision": "Manual",
+        "precio": 3000000,
+        "stock": 1,
+        "categorias": {
+         "tipo": "Autos",
+         "condicion": "Usados"
+        },
+        "imagen": "/img/suran.jpg"
+       },
+       {
+        "id": 8,
+        "nombre": "Yamaha FZ X 150",
+        "marca": "Yamaha",
+        "kilometros": "0 Km",
+        "color": "Negro",
+        "combustible": "Nafta",
+        "transmision": "Manual",
+        "precio": 5000,
+        "stock": 10,
+        "categorias": {
+         "tipo": "Motos",
+         "condicion": "Nuevos"
+        },
+        "imagen": "/img/fz.jpg"
+       },
+       {
+        "id": 8,
+        "nombre": "Royal Enfield Classic 350",
+        "marca": "Royal Enfield",
+        "kilometros": "0 Km",
+        "color": "Verde militar",
+        "combustible": "Nafta",
+        "transmision": "Manual",
+        "precio": 6000,
+        "stock": 3,
+        "categorias": {
+         "tipo": "Motos",
+         "condicion": "Nuevos"
+        },
+        "imagen": "/img/classic350.jpg"
+       }
+]

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head.ejs') %>    
+<body>
+    <main>
+      <%- include('../partials/header.ejs') %>
+      <section class="adm">
+        <div class="inner-titulo">
+            <h2>Administrador de publicaciones</h2>
+        </div>
+        <div class="inner-botones">
+            <button class="btn" type="button" onclick="window.location.href='/admin/add'">Agregar</button>
+        </div>
+        <div class="container-table" >
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ver</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% modelos.forEach(modelo => { %>
+              <tr>
+                <td><%= modelo.id%> </td>
+                <td><%= modelo.nombre%> </td>
+                <td><a href="/admin/detalle/<%= modelo.id%> "> <i class="fa-solid fa-eye" style="color: #353cff;"></i></a></td>
+                <td><a href="/admin/edit/<%= modelo.id%> "> <i class="fa-solid fa-pencil" style="color: #353cff;"></i></a></td>
+                <td><a href="/admin/delete/<%= modelo.id%>"><i class="fa-solid fa-trash" style="color: #353cff;"></i></a></td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table> 
+        </div>       
+      </section>
+      <script src="../../app.js"></script>
+    </main>
+  </body>
+</html>

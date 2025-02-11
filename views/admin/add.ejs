@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main style="display: flex; justify-content: center; margin: 1vw 0; align-items: center; flex-direction: column;">
+        <div class="titulo-destacados">
+            <h2 class="titulodestacados">Crear publicación</h2>
+        </div>
+        <form method="post" class="formulario">
+            <div class="form-group textarea-group">
+                <label for="titulopubli">Titulo:</label>
+                <input type="text" id="titulopubli" name="titulo" placeholder="Ingresa un titulo" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="marcapubli">Marca:</label>
+                <input type="text" id="marcapubli" name="marca" placeholder="Ingresa la marca del vehículo" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="kilometraje">Kilometros:</label>
+                <input type="number" id="kilometraje" name="Kilometros" placeholder="Ingresa el kilometraje" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="colorpubli">Color:</label>
+                <input type="text" id="colorpubli" name="color" placeholder="Ingresa el color" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="combustiblepubli">Combustible:</label>
+                <input type="text" id="combustiblepubli" name="combustible" placeholder="Tipo de combustible" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="transmpubli">Transmisión:</label>
+                <input type="text" id="transmpubli" name="transmision" placeholder="Tipo de transmisión" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="colorpubli">Precio:</label>
+                <input type="number" id="preciopubli" name="precio" placeholder="Ingresa el precio" required>
+            </div>
+
+            <div class="form-group textarea-group">
+                <label for="stockpubli">Stock:</label>
+                <input type="number" id="stockpubli" name="stock" placeholder="Ingresa el stock disponible" required>
+            </div>
+            
+            <div class="form-group textarea-group">
+                <select id="categpubli" name="categoria" required>
+                    <option value="" disabled selected>Tipo de vehículo</option>
+                    <option value="auto">Autos</option>
+                    <option value="moto">Motos</option>
+                    <option value="utilitario">Vehículos utilitarios</option>
+                </select>
+            </div>
+
+            <div class="form-group textarea-group">
+                <select id="condicpubli" name="condicion" required>
+                    <option value="" disabled selected>Condición</option>
+                        <option value="nuevo">Nuevos</option>
+                        <option value="usado">Usados</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <button class="btn" type="submit">Guardar</button>
+                <button class="btn" type="button" style="margin-top: 7px;" onclick="window.location.href='/'">Volver</button>
+            </div>
+        </form>
+    </main>
+    <script src="../../app.js"></script>
+</body>
+</html>

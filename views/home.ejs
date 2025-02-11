@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main>
+        <section class="carrousel">
+            <div class="cont-carrousel">
+                <img src="/img/autos.jpg" alt="">
+                <h3 class="btnconoce" href="">Tu vehículo soñado está en AutoNet</h3>
+            </div>
+        </section>
+        <section class="publidestacados">
+            <div class="titulo-destacados">
+                <h2 class="titulodestacados">Vehículos Destacados</h2>
+            </div>
+            <div class="container-card">
+                <div class="card">
+                    <img src="/img/gol.jpg" style="width:100%">
+                    <h2>Gol Trend 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $3.000</h3>
+                    <p>180.000 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/208.jpeg" style="width:100%">
+                    <h2>Peugeot 208 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $4.500</h3>
+                    <p>500 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/cronos.jpg" style="width:100%">
+                    <h2>Fiat Cronos 1.3</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$5.250.000</h3>
+                    <p>100.500 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+            </div>
+        </section>
+        <section class="publicaciones">
+            <div class="titulo-publicaciones">
+                <h2 class="titulodestacados">Todas las publicaciones</h2>
+            </div>
+            <div class="cont-busqueda">
+                <div class="inner-barra">
+                    <input class="busqueda" type="text" placeholder="Buscar...">
+                </div>
+                <div class="inner-filtros">
+                    <select name="ordenar" id="ordenar">
+                        <option value="relevante">Más relevantes</option>
+                        <option value="menor">Menor precio</option>
+                        <option value="mayor">Mayor precio</option>
+                    </select>
+                    <select name="filtro1" id="filtro1">
+                        <option value="" disabled selected>Tipo de vehículo</option>
+                        <option value="auto">Autos</option>
+                        <option value="moto">Motos</option>
+                        <option value="utilitario">Vehículos utilitarios</option>
+                    </select>
+                    <select name="filtro2" id="filtro2">
+                        <option value="" disabled selected>Condición</option>
+                        <option value="nuevo">Nuevos</option>
+                        <option value="usado">Usados</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container-card">
+                <div class="card">
+                    <img src="/img/gol.jpg" style="width:100%">
+                    <h2>VW Gol Trend 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $3.000</h3>
+                    <p>180.000 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/208.jpeg" style="width:100%">
+                    <h2>Peugeot 208 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $4.500</h3>
+                    <p>500 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/cronos.jpg" style="width:100%">
+                    <h2>Fiat Cronos 1.3</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$5.250.000</h3>
+                    <p>100.500 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+                <div class="card">
+                    <img src="/img/utilitario.jpg" style="width:100%">
+                    <h2>Changan MD201</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$16.000.000</h3>
+                    <p>30.000 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/kicks.jpg" style="width:100%">
+                    <h2>Nissan Kicks 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $32.000</h3>
+                    <p>0 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/palio.jpg" style="width:100%">
+                    <h2>Fiat Palio 1.4</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$2.500.000</h3>
+                    <p>210.500 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+                <div class="card">
+                    <img src="/img/suran.jpg" style="width:100%">
+                    <h2>VW Suran 1.6</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$3.000.000</h3>
+                    <p>150.250 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/fz.jpg" style="width:100%">
+                    <h2>Yamaha FZ X 150</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $5.000</h3>
+                    <p>0 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+
+                <div class="card">
+                    <img src="/img/classic350.jpg" style="width:100%">
+                    <h2>Royal Enfield Classic 350</h2>
+                    <h3 class="price" style="font-weight: 100; font-size: 20px;">USD $6.000</h3>
+                    <p>0 km</p>
+                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
+                </div>
+            </div>
+            <div class="cont-nav">
+                <div class="inner-nav">
+                    <a href="" class="nav">1</a>
+                    <a href="" class="nav">2</a>
+                    <a href="" class="nav">3</a>
+                    <a href="" class="nav">4</a>
+                    <a href="" class="nav">5</a>
+                    <a href="" class="nav">6</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include("./partials/footer.ejs") %>
+    <script src="../app.js"></script>
+</body>
+</html>
