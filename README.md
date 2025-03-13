@@ -32,3 +32,11 @@ https://trello.com/invite/b/67116189bd8add3b10638e7f/ATTI058f50adcfa5c1de8bd2f1e
 
 ### RETROSPECTIVA
 En este sprint tuve muchos obstáctulos y poco tiempo para trabajar, sin embargo creo que logré aprender y entender los contenidos de las clases. Algo que tengo que empezar a hacer es, en caso de quedarme atascado, consultar mis dudas al profe o a mis compañeros. 
+
+## SPRINT 4
+### LINK DEL TABLERO DE TRABAJO
+https://trello.com/invite/b/67116189bd8add3b10638e7f/ATTI058f50adcfa5c1de8bd2f1e70209359f648253C8/dpfsmateogrisotto
+
+### RETROSPECTIVA
+En este sprint fui encontrando y corrigiendo algunos errores de las vistas, los controladores y las rutas. Estos errores no me permitían continuar en algunos puntos, pero los pude solucionar.  
+
