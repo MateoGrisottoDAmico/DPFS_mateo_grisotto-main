@@ -7,7 +7,7 @@
         <div class="titulo-destacados">
             <h2 class="titulodestacados">Crear publicación</h2>
         </div>
-        <form method="post" class="formulario">
+        <form method="post" class="formulario" action="/admin/save" enctype="multipart/form-data">
             <div class="form-group textarea-group">
                 <label for="titulopubli">Titulo:</label>
                 <input type="text" id="titulopubli" name="titulo" placeholder="Ingresa un titulo" required>
@@ -20,7 +20,7 @@
 
             <div class="form-group textarea-group">
                 <label for="kilometraje">Kilometros:</label>
-                <input type="number" id="kilometraje" name="Kilometros" placeholder="Ingresa el kilometraje" required>
+                <input type="number" id="kilometraje" name="kilometraje" placeholder="Ingresa el kilometraje" required>
             </div>
 
             <div class="form-group textarea-group">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group textarea-group">
-                <label for="colorpubli">Precio:</label>
+                <label for="precioubli">Precio:</label>
                 <input type="number" id="preciopubli" name="precio" placeholder="Ingresa el precio" required>
             </div>
 
@@ -51,20 +51,25 @@
             <div class="form-group textarea-group">
                 <select id="categpubli" name="categoria" required>
                     <option value="" disabled selected>Tipo de vehículo</option>
-                    <option value="auto">Autos</option>
-                    <option value="moto">Motos</option>
-                    <option value="utilitario">Vehículos utilitarios</option>
+                    <option value="Auto">Autos</option>
+                    <option value="Moto">Motos</option>
+                    <option value="Utilitario">Vehículos utilitarios</option>
                 </select>
             </div>
 
             <div class="form-group textarea-group">
                 <select id="condicpubli" name="condicion" required>
                     <option value="" disabled selected>Condición</option>
-                        <option value="nuevo">Nuevos</option>
-                        <option value="usado">Usados</option>
+                        <option value="Nuevo">Nuevos</option>
+                        <option value="Usado">Usados</option>
                 </select>
             </div>
-        
+
+            <div class="form-group textarea-group">
+                <label for="imagen">Imagenes:</label>
+                <input type="file" id="imagen" name="imagen" placeholder="Subir archivo" accept="image/*" required>
+            </div>
+            
             <div class="form-group">
                 <button class="btn" type="submit">Guardar</button>
                 <button class="btn" type="button" style="margin-top: 7px;" onclick="window.location.href='/'">Volver</button>

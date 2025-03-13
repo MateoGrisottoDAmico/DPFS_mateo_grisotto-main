@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "nombre": "Mateo",
+        "apellido": "Grisotto",
+        "email": "matugrisotto@gmail.com",
+        "telefono": "1144445555",
+        "password": "Abc123",
+        "foto": "../public/img/perfil.png"
+       }
+]

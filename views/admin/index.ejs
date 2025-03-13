@@ -26,7 +26,7 @@
               <% modelos.forEach(modelo => { %>
               <tr>
                 <td><%= modelo.id%> </td>
-                <td><%= modelo.nombre%> </td>
+                <td><%= modelo.titulo%> </td>
                 <td><a href="/admin/detalle/<%= modelo.id%> "> <i class="fa-solid fa-eye" style="color: #353cff;"></i></a></td>
                 <td><a href="/admin/edit/<%= modelo.id%> "> <i class="fa-solid fa-pencil" style="color: #353cff;"></i></a></td>
                 <td><a href="/admin/delete/<%= modelo.id%>"><i class="fa-solid fa-trash" style="color: #353cff;"></i></a></td>

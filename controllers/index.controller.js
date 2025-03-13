@@ -5,7 +5,7 @@ const modelosPath = path.join(__dirname,"..","data","modelos.json")
 
 const indexController = {
     getHome: (req,res)=>{
-        const modelos = JSON.parse(fs.readFileSync(modelosPath,"utf-8"))
+        let modelos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/modelos.json')));
         res.render("home.ejs", {modelos})
     },
     getDetalle: (req,res)=>{

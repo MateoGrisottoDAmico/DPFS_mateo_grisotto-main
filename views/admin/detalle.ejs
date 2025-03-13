@@ -5,38 +5,46 @@
     <%- include("../partials/header.ejs") %>
     <main style="flex: 1;">
         <div class="cont-titulodetalle">
-            <h2 class="titulo-detalle">Fiat Cronos 1.3 Drive cvt</h2>
+            <h2 class="titulo-detalle"><%= miModelo.titulo%></h2>
         </div>
         <div class="cont-grande">
             <div class="cont-1">
                 <div class="inner-foto">
-                    <img src="../../public/img/cronos.jpg" alt="">
+                    <img src="/img/<%= miModelo.imagen%>" alt="">
                 </div>
             </div>
             <div class="cont-2">
                 <div class="inner-precio">
-                    <h2 class="precio">$5.250.000</h3>
+                    <h2 class="precio">$<%= miModelo.precio%></h3>
                 </div>
                 <div class="inner-desc">
+                    <div class="marca" style="display: flex; justify-content: center; align-items: baseline;">
+                        <h3 style="font-weight: 800; padding-right: 5px;">Marca:</h3>
+                        <h3><%= miModelo.marca%></h3>
+                    </div>
                     <div class="km" style="display: flex; justify-content: center; align-items: baseline;">
                         <h3 style="font-weight: 800; padding-right: 5px;">Kilometros:</h3>
-                        <h3>100.500</h3>
+                        <h3><%= miModelo.kilometraje%></h3>
                     </div>
-                    <div class="año" style="display: flex; justify-content: center; align-items: baseline;">
-                        <h3 style="font-weight: 800; padding-right: 5px;">Año:</h3>
-                        <h3>2020</h3>
-                    </div>
-                    <div class="transmision" style="display: flex; justify-content: center; align-items: baseline;">
+                    <div class="transm" style="display: flex; justify-content: center; align-items: baseline;">
                         <h3 style="font-weight: 800; padding-right: 5px;">Transmisión:</h3>
-                        <h3>Manual</h3>
+                        <h3><%= miModelo.transmision%></h3>
                     </div>
-                    <div class="version" style="display: flex; justify-content: center; align-items: baseline;">
-                        <h3 style="font-weight: 800; padding-right: 5px;">Versión:</h3>
-                        <h3>1.3 GSE DRIVE PACK PLUS MT</h3>
+                    <div class="comb" style="display: flex; justify-content: center; align-items: baseline;">
+                        <h3 style="font-weight: 800; padding-right: 5px;">Combustible:</h3>
+                        <h3><%= miModelo.combustible%></h3>
                     </div>
-                    <div class="traccion" style="display: flex; justify-content: center; align-items: baseline;">
-                        <h3 style="font-weight: 800; padding-right: 5px;">Tracción:</h3>
-                        <h3>4x2</h3>
+                    <div class="color" style="display: flex; justify-content: center; align-items: baseline;">
+                        <h3 style="font-weight: 800; padding-right: 5px;">Color:</h3>
+                        <h3><%= miModelo.color%></h3>
+                    </div>
+                    <div class="estado" style="display: flex; justify-content: center; align-items: baseline;">
+                        <h3 style="font-weight: 800; padding-right: 5px;">Condición:</h3>
+                        <h3><%= miModelo.condicion%></h3>
+                    </div>
+                    <div class="cat" style="display: flex; justify-content: center; align-items: baseline;">
+                        <h3 style="font-weight: 800; padding-right: 5px;">Categoría:</h3>
+                        <h3><%= miModelo.categoria%></h3>
                     </div>
                 </div>
                 <div class="inner-botones">
