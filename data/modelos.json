@@ -169,5 +169,19 @@
     "categoria": "Moto",
     "condicion": "Nuevo",
     "imagen": "modelo1741848098211.png"
+  },
+  {
+    "id": 13,
+    "titulo": "Ford Focus 2.0",
+    "marca": "Ford",
+    "kilometraje": "12000",
+    "color": "Blanco",
+    "combustible": "Nafta",
+    "transmision": "Automático",
+    "precio": "14000000",
+    "stock": "1",
+    "categoria": "Auto",
+    "condicion": "Nuevo",
+    "imagen": "modelo1742069349899.jpeg"
   }
 ]

@@ -49,6 +49,11 @@ header{
     opacity: 0.7;
 }
 
+.inner-botones2 i{
+    margin-right: 2vw;
+}
+
+
 .inner-botones2 a:hover {
     opacity: 0.7;
 }
@@ -336,12 +341,30 @@ header{
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
 }
 
 .form-group {
     flex: 1 1 calc(50% - 20px); 
     display: flex;
     flex-direction: column;
+}
+
+.form-group2 {
+    flex: 1 1 calc(50% - 20px); 
+    display: flex;
+}
+
+.inner-check{
+    width: 5%;
+}
+
+.inner-label{
+    width: 50%;
+}
+
+#remember {
+    align-items: center;
 }
 
 .textarea-group {
@@ -612,4 +635,20 @@ header{
 ion-icon {
     vertical-align: middle;
     font-size: 24px;
+}
+
+/* --------------ACA EMPIEZA PROFILE--------------*/
+
+.inner-avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ccc;
+}
+
+.inner-avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

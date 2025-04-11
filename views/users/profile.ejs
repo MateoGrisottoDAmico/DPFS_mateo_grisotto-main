@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main style="display: flex; justify-content: center; margin: 8vw 0; align-items: center; flex-direction: column;">    
+        <div class="inner-titulo">
+            <h2>Perfil de <%= user.nombre %> <%= user.apellido %></h2>
+        </div>
+        <div class="inner-avatar">
+            <img src="/img/users/<%= user.foto %>" alt="">
+        </div>
+    </main>
+    <script src="../../app.js"></script>
+</body>
+</html>

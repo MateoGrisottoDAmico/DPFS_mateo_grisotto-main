@@ -1,11 +1,38 @@
 [
-    {
-        "id": 1,
-        "nombre": "Mateo",
-        "apellido": "Grisotto",
-        "email": "matugrisotto@gmail.com",
-        "telefono": "1144445555",
-        "password": "Abc123",
-        "foto": "../public/img/perfil.png"
-       }
+  {
+    "id": 1,
+    "nombre": "Mateo",
+    "apellido": "DAmico",
+    "email": "matugrisotto@gmail.com",
+    "telefono": "01166450878",
+    "password": "$2b$10$flF.vmZEREtpyOxcZkhqCuPKbb1YehhM4cVzm3iDC9Nq2/Hxu9U1O",
+    "foto": "default.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Juan",
+    "apellido": "Cho",
+    "email": "wasd@gmail.com",
+    "telefono": "1155554444",
+    "password": "$2b$10$imoZ6GuMFIkKa1xOFoONEuKna8mfIWtzyp6ilf/uNuQOF2MHXwdM6",
+    "foto": "default.png"
+  },
+  {
+    "id": 3,
+    "nombre": "hola",
+    "apellido": "nosoy",
+    "email": "matu@gmail.com",
+    "telefono": "1154913343",
+    "password": "$2b$10$pqlAY5HPi9Md8BvtgP1EGenKiVmmpCoQZd8BfHEE18JTvKny0X/XW",
+    "foto": "user1744173350751.png"
+  },
+  {
+    "id": 4,
+    "nombre": "el",
+    "apellido": "DIOS",
+    "email": "test@gmail.com",
+    "telefono": "124124124",
+    "password": "$2b$10$eE2OEd2ydm7UPNAFslPOCO5tRFtEr3dT98Z9xsHHbfoAcUOMvgZ9i",
+    "foto": "admin.png"
+  }
 ]
