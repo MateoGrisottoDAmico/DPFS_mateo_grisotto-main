@@ -34,5 +34,14 @@
     "telefono": "124124124",
     "password": "$2b$10$eE2OEd2ydm7UPNAFslPOCO5tRFtEr3dT98Z9xsHHbfoAcUOMvgZ9i",
     "foto": "admin.png"
+  },
+  {
+    "id": 5,
+    "nombre": "otra",
+    "apellido": "cuenta",
+    "email": "otra@gmail.com",
+    "telefono": "1199996666",
+    "password": "$2b$10$CrDBYbKqDzuT5dUQRnDuhevgvfhZVyzizANHiu/2tcQdxiI6RjdFW",
+    "foto": "user1744399113239.png"
   }
 ]

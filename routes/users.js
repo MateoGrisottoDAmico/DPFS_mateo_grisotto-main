@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const usersController = require("../controllers/users.controller")
+const usersController = require("../controllers/users.controller");
 const multer = require('multer');
 const path = require("path");
+const loggedAuth = require("../middlewares/loggedAuth");
+const invitadosAuth = require("../middlewares/invitadosAuth");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -16,11 +18,11 @@ const storage = multer.diskStorage({
   
   const upload = multer({storage})
 
-  router.get("/login", usersController.getLogin);
-  router.get("/register", usersController.getRegister);
+  router.get("/login", loggedAuth, usersController.getLogin);
+  router.get("/register", loggedAuth, usersController.getRegister);
   router.post("/register", upload.single('foto'), usersController.processRegister);
   router.post("/login", usersController.processLogin);
-  router.get("/profile", usersController.getProfile);
-  router.get("/logout", usersController.logout);
+  router.get("/profile", invitadosAuth, usersController.getProfile);
+  router.get("/logout", invitadosAuth, usersController.logout);
 
 module.exports = router;
