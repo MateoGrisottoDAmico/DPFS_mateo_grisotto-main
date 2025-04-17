@@ -7,16 +7,20 @@ const userLogged = require('./middlewares/userLogged.js');
 const port = 3000;
 const methodOverride = require('method-override');
 
+// const morgan = require('morgan');
+// app.use(morgan('tiny'));
+
 const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const productsRouter = require("./routes/products.js");
 const adminRouter = require("./routes/admin.js");
 
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
 
 app.use(methodOverride('_method'));
+
 
 app.use(session({secret: "EstoEsUnSecreto", saveUninitialized:true, resave:true}));
 
@@ -30,6 +34,10 @@ app.use("/",indexRouter);
 app.use("/users",usersRouter);
 app.use("/products",productsRouter);
 app.use("/admin",adminRouter);
+
+app.use(function(req,res){
+    res.status (404).render('not-found.ejs',{title: 'No encontrado'});
+});
 
 app.listen(port, ()=>{
     console.log(`Servidor corriendo en el puerto http://localhost:${port}`)

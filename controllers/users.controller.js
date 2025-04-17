@@ -23,7 +23,8 @@ module.exports={
                 email: req.body.email,
                 telefono: req.body.telefono,
                 password: bcryptjs.hashSync(password, 10),
-                foto: req.file.filename
+                foto: req.file.filename,
+                role: "user"
             }
             users.push(nuevoUser);
             let nuevoUserGuardar = JSON.stringify(users,null,2);
@@ -70,5 +71,16 @@ module.exports={
     req.session.destroy();
 
     res.redirect('/');
+  },
+  edit: (req,res)=>{
+    const {id} = req.params;
+
+    let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+    let userFound = users.find(user => user.id == id);
+
+    if(userFound){
+      res.render('users/edit', {user: userFound});
+    }
+    res.status(404).render('not-found.ejs', {title: "Usuario inexistente"});
   }
 }

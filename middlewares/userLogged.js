@@ -7,6 +7,9 @@ const userLogged = (req, res, next) => {
     if (req.session && req.session.userLogged) {
         res.locals.isLogged = true;
         res.locals.userLogged = req.session.userLogged;
+        if (req.session.userLogged.role === "admin") {
+            res.locals.isAdmin = true;
+        }
     } else if (req.cookies && req.cookies.email) {
         const userFromCookie = users.find(user => user.email === req.cookies.email);
 
@@ -14,6 +17,10 @@ const userLogged = (req, res, next) => {
             req.session.userLogged = userFromCookie;
             res.locals.isLogged = true;
             res.locals.userLogged = userFromCookie;
+
+            if (userFromCookie.role === "admin") {
+                res.locals.isAdmin = true;
+            }
         }
     }
 
@@ -21,3 +28,4 @@ const userLogged = (req, res, next) => {
 };
 
 module.exports = userLogged;
+    

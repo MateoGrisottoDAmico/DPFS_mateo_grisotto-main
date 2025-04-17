@@ -27,11 +27,13 @@
                     <h3>Acerca de Nosotros</h3>
                 </a>
             </div>
-            <div class="inner-admin">
-                <a class="btnacerca" href="/admin/">
-                    <h3>Administrar</h3>
-                </a>
-            </div>
+            <% if (typeof locals.isAdmin !== "undefined" && locals.isAdmin) { %>
+                <div class="inner-admin">
+                    <a class="btnacerca" href="/admin/">
+                        <h3>Administrar</h3>
+                    </a>
+                </div>
+            <% } %>
         </div>
         <div class="inner-botones2">
             <% if (locals.isLogged) { %>
