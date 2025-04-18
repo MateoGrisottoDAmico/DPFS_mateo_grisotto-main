@@ -11,7 +11,8 @@
             <img src="/img/users/<%= user.foto %>" alt="">
         </div>
         <div class="form-group" style="padding-top: 3vw;">
-            <button class="btn" type="submit" onclick="window.location.href='/users/edit'">Editar perfil</button>
+            <button class="btn" type="submit" onclick="window.location.href='/users/edit/<%= user.id %>'">Editar perfil</button>
+            <button class="btn" type="submit" onclick="window.location.href='/users/delete/<%= user.id%>'" style="margin-top: 10px; background-color: red;">Borrar cuenta</button>
         </div>
     </main>
     <script src="../../app.js"></script>

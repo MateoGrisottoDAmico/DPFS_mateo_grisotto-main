@@ -41,12 +41,22 @@
   },
   {
     "id": 5,
-    "nombre": "otra",
+    "nombre": "otraa",
     "apellido": "cuenta",
     "email": "otra@gmail.com",
     "telefono": "1199996666",
-    "password": "$2b$10$CrDBYbKqDzuT5dUQRnDuhevgvfhZVyzizANHiu/2tcQdxiI6RjdFW",
+    "password": "otra",
     "foto": "user1744399113239.png",
+    "role": "user"
+  },
+  {
+    "id": 6,
+    "nombre": "aaa",
+    "apellido": "bbb",
+    "email": "a@gmail.com",
+    "telefono": "1144445555",
+    "password": "$2b$10$AgSO1qF96Y9gx63c8JU.1uTD2aAINyYanATC/wU60dONHmS6UrJdq",
+    "foto": "user1744952094138.png",
     "role": "user"
   }
 ]

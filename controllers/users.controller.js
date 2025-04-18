@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 const bcryptjs = require("bcryptjs");
+const { name } = require("ejs");
+const { destroy } = require("./admin.controller");
 
 const userPath = path.join(__dirname, "..", "data", "users.json");
 
@@ -82,5 +84,49 @@ module.exports={
       res.render('users/edit', {user: userFound});
     }
     res.status(404).render('not-found.ejs', {title: "Usuario inexistente"});
+  },
+  update: (req,res)=>{
+    try {
+      const users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+      const { id } = req.params;
+      const { nombre, apellido, email, telefono, password } = req.body;
+  
+      let userFound = users.find(user => user.id == id);
+      if (!userFound) {
+        return res.status(404).send('Usuario no encontrado');
+      }
+  
+      userFound.nombre = nombre;
+      userFound.apellido = apellido;
+      userFound.email = email;
+      userFound.telefono = telefono;
+      userFound.password = password == "" ? userFound.password:bcryptjs.hashSync(password, 10);
+      userFound.foto = req.file?.filename || userFound.foto;
+  
+      fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), JSON.stringify(users, null, 2));
+      req.session.userLogged = userFound;
+      return res.redirect('/');
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send('Error al actualizar usuario');
+    }
+  },
+  destroy: (req, res) => {
+    try {
+      let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+      const userDeleteId = req.params.id;
+  
+      const updatedUsers = users.filter(user => user.id != userDeleteId);
+  
+      fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), JSON.stringify(updatedUsers, null, 2));
+  
+      res.clearCookie('email');
+      req.session.destroy();
+
+      return res.redirect('/');
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Error al eliminar el usuario");
+    }
   }
 }
