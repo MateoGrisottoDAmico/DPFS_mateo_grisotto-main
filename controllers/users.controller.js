@@ -3,12 +3,16 @@ const fs = require("fs");
 const bcryptjs = require("bcryptjs");
 const { name } = require("ejs");
 const { destroy } = require("./admin.controller");
+const { validationResult } = require('express-validator');
 
 const userPath = path.join(__dirname, "..", "data", "users.json");
 
 module.exports={
-  getLogin: (req,res)=>{
-    res.render("users/login");
+  getLogin: (req, res) => {
+    return res.render('users/login', {
+      errors: {},
+      old: {}
+    });
   },
   getRegister: (req,res)=>{
     res.render("users/register");
@@ -34,36 +38,52 @@ module.exports={
             res.redirect('/');
   },
   processLogin: (req,res)=>{
-    let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+    const errors = validationResult(req);
 
-    let userTologgin = users.find(user => user.email == req.body.email);
-    
-    if(userTologgin){
+    if(errors.isEmpty()){
+      let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+      let userTologgin = users.find(user => user.email == req.body.email);
       
-      let passV = bcryptjs.compareSync(req.body.password, userTologgin.password);
+      if(userTologgin){
+        let passV = bcryptjs.compareSync(req.body.password, userTologgin.password);
 
-      if(passV){
+        if (passV) {
+          delete userTologgin.password;
+          req.session.userLogged = userTologgin;
         
-        delete userTologgin.password;
-        req.session.userLogged = userTologgin;
-
-        if(req.body.rememberme == "on"){
-
-          res.cookie('email', userTologgin.email, {maxAge: (60*1000)*60});
-        }
-
-        return res.redirect('/users/profile');
+          if (req.body.rememberme == "on") {
+            res.cookie('email', userTologgin.email, { maxAge: (60 * 1000) * 60 });
+          }
+        
+          return res.redirect('/users/profile');
+        } else {
+          return res.render('users/login', {
+            errors: {
+              password: {
+                msg: 'Credenciales inválidas'
+              }
+            },
+            old: req.body
+          });
+        }        
       }
-
-      console.log("Las credenciales son incorrectas");
-      return res.redirect('/users/login');
-    }
+      else{
+        return res.render('users/login', {
+          errors: {
+            email: {
+              msg: 'El correo ingresado no está registrado'
+            }
+          },
+          old: req.body
+        });        
+      }
+    } 
     else{
-      
-      console.log("El mail no está ingresado");
-      return res.redirect('/users/login');
+      return res.render('users/login', {
+        errors: errors.mapped(),
+        old: req.body
+      });
     }
-
   },
   getProfile: (req,res)=>{
     res.render("users/profile", {user: req.session.userLogged});

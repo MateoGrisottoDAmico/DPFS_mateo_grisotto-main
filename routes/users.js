@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require("path");
 const loggedAuth = require("../middlewares/loggedAuth");
 const invitadosAuth = require("../middlewares/invitadosAuth");
+const { loginValidator } = require("../middlewares/validations");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,7 +22,7 @@ const storage = multer.diskStorage({
   router.get("/login", loggedAuth, usersController.getLogin);
   router.get("/register", loggedAuth, usersController.getRegister);
   router.post("/register", upload.single('foto'), usersController.processRegister);
-  router.post("/login", usersController.processLogin);
+  router.post("/login", loginValidator, usersController.processLogin);
   router.get("/profile", invitadosAuth, usersController.getProfile);
   router.get("/logout", invitadosAuth, usersController.logout);
   router.get("/edit/:id", invitadosAuth, usersController.edit);
