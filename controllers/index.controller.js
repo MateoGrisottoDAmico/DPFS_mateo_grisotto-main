@@ -3,14 +3,21 @@ const productsPath = path.join(__dirname)
 let fs = require("fs")
 const modelosPath = path.join(__dirname,"..","data","modelos.json")
 
-const indexController = {
+const db = require("../database/models");
+
+
+module.exports = {
     getHome: (req,res)=>{
-        let modelos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/modelos.json')));
-
-        req.session.horaDeVisita = Date.now()
-
-        res.render("home.ejs", {modelos})
+        db.Modelo.findAll()
+        .then(modelos=> {
+            res.render("home.ejs", {modelos})
+        })
     },
+    show: (req,res) =>{
+            let modelos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/modelos.json')));
+            let miModelo = modelos.find(modelo => modelo.id == req.params.id);
+            res.render('admin/detalle', {miModelo});
+        },
     getDetalle: (req,res)=>{
         res.render("detalle.ejs")
     },
@@ -19,4 +26,3 @@ const indexController = {
     }
 }
 
-module.exports = indexController;
