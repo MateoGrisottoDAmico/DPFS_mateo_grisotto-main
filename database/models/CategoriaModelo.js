@@ -1,32 +1,40 @@
-'use strict';
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('categoria', {
+module.exports = (sequelize, DataTypes) => {
+  const Categoria = sequelize.define(
+    "Categoria",
+    {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
       },
       nombre: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
-      }
-    });
-  },
+        defaultValue: DataTypes.NOW,
+      },
+    },
+    {
+      tableName: "categoria",
+      timestamps: true,
+    }
+  );
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('categoria');
-  }
+  Categoria.associate = function (models) {
+    Categoria.hasMany(models.Modelo, {
+      foreignKey: "categoria_id",
+      as: "modelos",
+    });
+  };
+
+  return Categoria;
 };

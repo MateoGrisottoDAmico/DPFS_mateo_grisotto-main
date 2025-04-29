@@ -1,76 +1,79 @@
 module.exports = (sequelize, DataTypes) => {
-    const Modelo = sequelize.define("Modelo", {
+  const Modelo = sequelize.define(
+    "Modelo",
+    {
       titulo: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       marca: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       kilometraje: {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         validate: {
-          min: 0
-        }
+          min: 0,
+        },
       },
       color: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       combustible: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       transmision: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       precio: {
         type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false
+        allowNull: false,
       },
       stock: {
         type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false
+        allowNull: false,
       },
       imagen: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
       },
       categoria_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       condicion_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      }
-    }, {
-      tableName: 'modelos',
-      timestamps: false
+        allowNull: false,
+      },
+    },
+    {
+      tableName: "modelos",
+      timestamps: false,
+    }
+  );
+
+  Modelo.associate = function (models) {
+    Modelo.belongsTo(models.Categoria, {
+      foreignKey: "categoria_id",
+      as: "categoria",
     });
-  
-    Modelo.associate = function(models) {
-      
-        Modelo.belongsTo(models.CategoriaModelo, {
-        foreignKey: 'categoria_id',
-        as: 'categoria'
-      });
-  
-      Modelo.belongsTo(models.CondicionModelo, {
-        foreignKey: 'condicion_id',
-        as: 'condicion'
-      });
-  
-      Modelo.belongsToMany(models.User, {
-        through: 'carrito',
-        foreignKey: 'modelos_id',
-        otherKey: 'users_id',
-        as: 'usuarios'
-      });
-    };
-  
-    return Modelo;
+
+    Modelo.belongsTo(models.Condicion, {
+      foreignKey: "condicion_id",
+      as: "condicion",
+    });
+
+    Modelo.belongsToMany(models.User, {
+      through: "carrito",
+      foreignKey: "modelos_id",
+      otherKey: "users_id",
+      as: "usuarios",
+    });
   };
+
+  return Modelo;
+};
