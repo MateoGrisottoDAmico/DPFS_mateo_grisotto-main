@@ -39,7 +39,10 @@ app.use(function(req,res){
     res.status (404).render('not-found.ejs',{title: 'No encontrado'});
 });
 
-app.listen(port, ()=>{
-    console.log(`Servidor corriendo en el puerto http://localhost:${port}`)
-});
-
+app.listen(port, async () => {
+    // await db.sequelize.sync({ force: true });
+    // console.log("All models were synchronized successfully.");
+  
+    console.log(`
+      Servidor corriendo en el puerto http://localhost:${port}`);
+  });
