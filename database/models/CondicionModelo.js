@@ -1,32 +1,46 @@
-'use strict';
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('condicion', {
+module.exports = (sequelize, DataTypes) => {
+  const Condicion = sequelize.define(
+    "Condicion",
+    {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
       },
       nombre: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
-      }
-    });
-  },
+        defaultValue: DataTypes.NOW,
+      },
+    },
+    {
+      tableName: "condicion",
+      timestamps: true,
+    }
+  );
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('condicion');
-  }
+  Condicion.associate = function (models) {
+    Condicion.hasMany(models.Modelo, {
+      foreignKey: "condicion_id",
+      as: "modelos",
+    });
+    Condicion.belongsToMany(models.User, {
+      through: "carrito",
+      foreignKey: "condicion_id",
+      otherKey: "users_id",
+      as: "users",
+    });
+  };
+
+  return Condicion;
 };
