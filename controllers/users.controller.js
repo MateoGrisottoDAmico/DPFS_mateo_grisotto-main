@@ -83,65 +83,75 @@ module.exports={
   getProfile: (req,res)=>{
     res.render("users/profile", {user: req.session.userLogged});
   },
-  logout: (req,res)=>{
+  logout: (req, res) => {
     res.clearCookie('email');
-    req.session.destroy();
-
-    res.redirect('/');
-  },
-  edit: (req,res)=>{
-    const {id} = req.params;
-
-    let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-    let userFound = users.find(user => user.id == id);
-
-    if(userFound){
-      res.render('users/edit', {user: userFound});
+    req.session.destroy(err => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Error al cerrar sesión");
+      }
+      return res.redirect('/');
+    });
+  },  
+  edit: async (req, res) => {
+    const { id } = req.params;
+    const user = await db.User.findByPk(id);
+    if (user) {
+      return res.render('users/edit', { user });
     }
-    res.status(404).render('not-found.ejs', {title: "Usuario inexistente"});
+    return res.status(404).render('not-found.ejs', { title: "Usuario inexistente" });
   },
-  update: (req,res)=>{
-    try {
-      const users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-      const { id } = req.params;
-      const { nombre, apellido, email, telefono, password } = req.body;
   
-      let userFound = users.find(user => user.id == id);
-      if (!userFound) {
-        return res.status(404).send('Usuario no encontrado');
+  update: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { nombre, apellido, email, telefono, password, oldFoto } = req.body;
+      const user = await db.User.findByPk(id);
+  
+      if (!user) return res.status(404).send('Usuario no encontrado');
+  
+      user.nombre = nombre;
+      user.apellido = apellido;
+      user.email = email;
+      user.telefono = telefono;
+  
+      if (password) {
+        user.password = bcryptjs.hashSync(password, 10);
       }
   
-      userFound.nombre = nombre;
-      userFound.apellido = apellido;
-      userFound.email = email;
-      userFound.telefono = telefono;
-      userFound.password = password == "" ? userFound.password:bcryptjs.hashSync(password, 10);
-      userFound.foto = req.file?.filename || userFound.foto;
+      user.foto = req.file ? req.file.filename : oldFoto;
   
-      fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), JSON.stringify(users, null, 2));
-      req.session.userLogged = userFound;
+      await user.save();
+  
+      req.session.userLogged = user;
+  
       return res.redirect('/');
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error al actualizar usuario');
     }
   },
-  destroy: (req, res) => {
+    
+  destroy: async (req, res) => {
     try {
-      let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-      const userDeleteId = req.params.id;
+      const { id } = req.params;
+      const user = await db.User.findByPk(id);
   
-      const updatedUsers = users.filter(user => user.id != userDeleteId);
+      if (!user) return res.status(404).send("Usuario no encontrado");
   
-      fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), JSON.stringify(updatedUsers, null, 2));
+      await user.destroy();
   
       res.clearCookie('email');
-      req.session.destroy();
-
-      return res.redirect('/');
+      req.session.destroy(err => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Error al eliminar sesión del usuario");
+        }
+        return res.redirect('/');
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).send("Error al eliminar el usuario");
     }
-  }
+  },   
 }

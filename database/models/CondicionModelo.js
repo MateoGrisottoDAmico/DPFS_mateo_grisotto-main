@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const CondicionModelo = sequelize.define("CondicionModelo", {
+  const Condicion = sequelize.define("Condicion", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -25,13 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
 
-  CondicionModelo.associate = (models) =>{
+  Condicion.associate = (models) =>{
     
-    CondicionModelo.hasMany(models.Modelo, {
+    Condicion.hasMany(models.Modelo, {
       foreignKey: 'condicion_id',
       as: 'condicion'
     });
   };
 
-  return CondicionModelo;
+  return Condicion;
 };

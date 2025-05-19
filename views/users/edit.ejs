@@ -35,8 +35,9 @@
 
             <div class="form-group textarea-group">
                 <label for="foto">Foto de perfil:</label>
+                <input type="hidden" name="oldFoto" value="<%= userLogged.foto %>">
                 <input type="file" id="foto" name="foto" placeholder="Subir archivo" accept="image/*">
-            </div>
+            </div>            
         
             <div class="form-group">
                 <button class="btn" type="submit">Enviar</button>

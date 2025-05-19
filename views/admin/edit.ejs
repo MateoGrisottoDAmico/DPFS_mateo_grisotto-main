@@ -50,26 +50,31 @@
             
             <div class="form-group textarea-group">
                 <select id="categpubli" name="categoria" required>
-                    <option value="" disabled selected>Tipo de vehículo</option>
-                    <option value="Auto" <%= editModelo.categoria == 'Auto' ? 'selected' : '' %>>Autos</option>
-                    <option value="Moto" <%= editModelo.categoria == 'Moto' ? 'selected' : '' %>>Motos</option>
-                    <option value="Utilitario" <%= editModelo.categoria == 'Utilitario' ? 'selected' : '' %>>Vehículos utilitarios</option>
-                </select>
+                    <option value="" disabled>Tipo de vehículo</option>
+                    <% categorias.forEach(categoria => { %>
+                        <option value="<%= categoria.id %>" <%= categoria.id == editModelo.categoria_id ? 'selected' : '' %>>
+                            <%= categoria.nombre %>
+                        </option>
+                    <% }) %>
+                </select>                  
             </div>
-
+            
             <div class="form-group textarea-group">
                 <select id="condicpubli" name="condicion" required>
-                    <option value="" disabled selected>Condición</option>
-                    <option value="Nuevo" <%= editModelo.condicion == 'Nuevo' ? 'selected' : '' %>>Nuevos</option>
-                    <option value="Usado" <%= editModelo.condicion == 'Usado' ? 'selected' : '' %>>Usados</option>
-                </select>
-            </div>
+                    <option value="" disabled>Condición</option>
+                    <% condiciones.forEach(condicion => { %>
+                        <option value="<%= condicion.id %>" <%= condicion.id == editModelo.condicion_id ? 'selected' : '' %>>
+                            <%= condicion.nombre %>
+                        </option>
+                    <% }) %>
+                </select>                  
+            </div>            
 
             <div class="form-group textarea-group">
-                <input type="hidden"  name="oldImagen"  value="<%= editModelo.imagen%>">
-                <label for="imagen">Imagenes:</label>
-                <input type="file" id="imagen" name="imagen" placeholder="Subir archivo" accept="image/*" required>
-            </div>
+                <input type="hidden" name="oldImagen" value="<%= editModelo.imagen %>">
+                <label for="imagen">Imagen:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+              </div>              
             
             <div class="form-group">
                 <button class="btn" type="submit">Guardar</button>

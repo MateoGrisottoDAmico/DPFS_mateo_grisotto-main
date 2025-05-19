@@ -54,12 +54,12 @@ module.exports = (sequelize, DataTypes) => {
   
     Modelo.associate = (models)=> {
       
-        Modelo.belongsTo(models.CategoriaModelo, {
+        Modelo.belongsTo(models.Categoria, {
         foreignKey: 'categoria_id',
         as: 'categoria'
       });
   
-      Modelo.belongsTo(models.CondicionModelo, {
+      Modelo.belongsTo(models.Condicion, {
         foreignKey: 'condicion_id',
         as: 'condicion'
       });
