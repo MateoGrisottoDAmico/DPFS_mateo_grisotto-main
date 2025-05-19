@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true
       },
-      rol: {
+      role: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'user'
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true
     });
   
-    User.associate = function(models) {
+    User.associate = (models)=> {
       User.belongsToMany(models.Modelo, {
         through: 'carrito',
         foreignKey: 'users_id',

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true
     });
   
-    Carrito.associate = function(models) {
+    Carrito.associate = (models)=> {
 
       Carrito.belongsTo(models.User, {
         foreignKey: 'users_id',

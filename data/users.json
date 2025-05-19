@@ -58,5 +58,15 @@
     "password": "$2b$10$AgSO1qF96Y9gx63c8JU.1uTD2aAINyYanATC/wU60dONHmS6UrJdq",
     "foto": "user1744952094138.png",
     "role": "user"
+  },
+  {
+    "id": 7,
+    "nombre": "adad",
+    "apellido": "ada",
+    "email": "kk@gmail.com",
+    "telefono": "12412",
+    "password": "$2b$10$ioMfZKppIZPrdwg2V7P8peEjSyj7Sczd502Mp.sHQGlqMhKMUA2hK",
+    "foto": "user1747618764014.png",
+    "role": "user"
   }
 ]

@@ -8,8 +8,8 @@
     "transmision": "Manual",
     "precio": "3150000",
     "stock": "1",
-    "categoria": "Auto",
-    "condicion": "Usado",
+    "categoria_id": 1,
+    "condicion_id": 1,
     "oldImagen": "",
     "id": "1",
     "imagen": "modelo1741843313001.jpg"
@@ -23,8 +23,8 @@
     "transmision": "Automático",
     "precio": "4500000",
     "stock": "1",
-    "categoria": "Auto",
-    "condicion": "Usado",
+    "categoria_id": 1,
+    "condicion_id": 1,
     "oldImagen": "modelo1741753380549.jpeg",
     "id": "2",
     "imagen": "modelo1741844635386.jpeg"
@@ -38,8 +38,8 @@
     "transmision": "Manual",
     "precio": "5250000",
     "stock": "10",
-    "categoria": "Auto",
-    "condicion": "Nuevo",
+    "categoria_id": 1,
+    "condicion_id": 2,
     "oldImagen": "modelo1741753520654.jpg",
     "id": "3",
     "imagen": "modelo1741844682282.jpg"
@@ -54,8 +54,8 @@
     "transmision": "Manual",
     "precio": "16000000",
     "stock": "1",
-    "categoria": "Utilitario",
-    "condicion": "Usado",
+    "categoria_id": 2,
+    "condicion_id": 1,
     "imagen": "modelo1741753632073.jpg"
   },
   {
@@ -68,8 +68,8 @@
     "transmision": "Automático",
     "precio": "32000000",
     "stock": "3",
-    "categoria": "Auto",
-    "condicion": "Nuevo",
+    "categoria_id": 1,
+    "condicion_id": 2,
     "imagen": "modelo1741753766497.jpg"
   },
   {
@@ -82,8 +82,8 @@
     "transmision": "Manual",
     "precio": "1500000",
     "stock": "1",
-    "categoria": "Auto",
-    "condicion": "Usado",
+    "categoria_id": 1,
+    "condicion_id": 1,
     "imagen": "modelo1741753970699.jpg"
   },
   {
@@ -96,8 +96,8 @@
     "transmision": "Manual",
     "precio": "3000000",
     "stock": "1",
-    "categoria": "Auto",
-    "condicion": "Usado",
+    "categoria_id": 1,
+    "condicion_id": 1,
     "imagen": "modelo1741754481638.jpg"
   },
   {
@@ -110,8 +110,8 @@
     "transmision": "Manual",
     "precio": "5525000",
     "stock": "12",
-    "categoria": "Moto",
-    "condicion": "Nuevo",
+    "categoria_id": 3,
+    "condicion_id": 2,
     "imagen": "modelo1741754591048.jpg"
   },
   {
@@ -124,8 +124,8 @@
     "transmision": "Manual",
     "precio": "6000000",
     "stock": "1",
-    "categoria": "Moto",
-    "condicion": "Usado",
+    "categoria_id": 3,
+    "condicion_id": 1,
     "imagen": "modelo1741754100732.jpg"
   },
   {
@@ -138,8 +138,8 @@
     "transmision": "Automático",
     "precio": "58000000",
     "stock": "6",
-    "categoria": "Auto",
-    "condicion": "Nuevo",
+    "categoria_id": 1,
+    "condicion_id": 2,
     "imagen": "modelo1741742003244.jpg"
   },
   {
@@ -152,8 +152,8 @@
     "transmision": "Manual",
     "precio": "38000000",
     "stock": "1",
-    "categoria": "Utilitario",
-    "condicion": "Usado",
+    "categoria_id": 2,
+    "condicion_id": 1,
     "imagen": "modelo1741847663675.JPG"
   },
   {
@@ -166,8 +166,8 @@
     "transmision": "Automático",
     "precio": "950000",
     "stock": "15",
-    "categoria": "Moto",
-    "condicion": "Nuevo",
+    "categoria_id": 3,
+    "condicion_id": 2,
     "imagen": "modelo1741848098211.png"
   },
   {
@@ -180,8 +180,8 @@
     "transmision": "Automático",
     "precio": "14000000",
     "stock": "1",
-    "categoria": "Auto",
-    "condicion": "Nuevo",
+    "categoria_id": 1,
+    "condicion_id": 2,
     "imagen": "modelo1742069349899.jpeg"
   }
 ]

@@ -6,6 +6,7 @@ const session = require('express-session');
 const userLogged = require('./middlewares/userLogged.js');
 const port = 3000;
 const methodOverride = require('method-override');
+const db = require("./database/models");
 
 // const morgan = require('morgan');
 // app.use(morgan('tiny'));
@@ -41,7 +42,7 @@ app.use(function(req,res){
 
 app.listen(port, async () => {
     // await db.sequelize.sync({ force: true });
-    // console.log("All models were synchronized successfully.");
+    console.log("All models were synchronized successfully.");
   
     console.log(`
       Servidor corriendo en el puerto http://localhost:${port}`);

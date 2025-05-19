@@ -40,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
       },
       categoria_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER, references:{model:"categorias",key:"id"},
         allowNull: false
       },
       condicion_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER, references:{model:"condiciones",key:"id"},
         allowNull: false
       }
     }, {
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false
     });
   
-    Modelo.associate = function(models) {
+    Modelo.associate = (models)=> {
       
         Modelo.belongsTo(models.CategoriaModelo, {
         foreignKey: 'categoria_id',

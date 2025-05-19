@@ -27,8 +27,8 @@ module.exports = {
       imagen: modelo.imagen,
       categoria_id: modelo.categoria_id,
       condicion_id: modelo.condicion_id,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      // createdAt: new Date(),
+      // updatedAt: new Date()
     })), {});
   },
 

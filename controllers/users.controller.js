@@ -4,6 +4,7 @@ const bcryptjs = require("bcryptjs");
 const { name } = require("ejs");
 const { destroy } = require("./admin.controller");
 const { validationResult } = require('express-validator');
+const db = require("../database/models");
 
 const userPath = path.join(__dirname, "..", "data", "users.json");
 
@@ -17,13 +18,9 @@ module.exports={
   getRegister: (req,res)=>{
     res.render("users/register");
   },
-  processRegister: (req,res)=>{
-    let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-            let ultimoUser = users.pop();
-            users.push(ultimoUser);
+  processRegister: async(req,res)=>{
             const{nombre, apellido, email, telefono, password} = req.body;
-            let nuevoUser = {
-                id: ultimoUser.id +1,
+            const nuevoUser = await db.User.create({
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 email: req.body.email,
@@ -31,19 +28,17 @@ module.exports={
                 password: bcryptjs.hashSync(password, 10),
                 foto: req.file.filename,
                 role: "user"
-            }
-            users.push(nuevoUser);
-            let nuevoUserGuardar = JSON.stringify(users,null,2);
-            fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), nuevoUserGuardar);
+            });
+
             res.redirect('/');
   },
-  processLogin: (req,res)=>{
+  processLogin: async(req,res)=>{
     const errors = validationResult(req);
 
     if(errors.isEmpty()){
-      let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-      let userTologgin = users.find(user => user.email == req.body.email);
-      
+      // let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
+      // let userTologgin = users.find(user => user.email == req.body.email);
+      let userTologgin = await db.User.findOne({where:{email:req.body.email}})
       if(userTologgin){
         let passV = bcryptjs.compareSync(req.body.password, userTologgin.password);
 

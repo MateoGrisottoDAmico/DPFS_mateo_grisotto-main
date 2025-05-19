@@ -1,32 +1,37 @@
-'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const CategoriaModelo = sequelize.define("CategoriaModelo", {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    }
+  }, {
+    tableName: 'categorias',
+    timestamps: false
+  });
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('categoria', {
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      nombre: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-      }
+  CategoriaModelo.associate = (models)  =>{
+    
+    CategoriaModelo.hasMany(models.Modelo, {
+      foreignKey: 'categoria_id',
+      as: 'categoria'
     });
-  },
+  };
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('categoria');
-  }
+  return CategoriaModelo;
 };
