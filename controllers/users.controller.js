@@ -15,74 +15,103 @@ module.exports={
       old: {}
     });
   },
-  getRegister: (req,res)=>{
-    res.render("users/register");
-  },
-  processRegister: async(req,res)=>{
-            const{nombre, apellido, email, telefono, password} = req.body;
-            const nuevoUser = await db.User.create({
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                email: req.body.email,
-                telefono: req.body.telefono,
-                password: bcryptjs.hashSync(password, 10),
-                foto: req.file.filename,
-                role: "user"
-            });
+  
+  getRegister: (req,res) => {
+    res.render("users/register", {
+      errors: {},
+      old: {}
+    });
+  },  
 
-            res.redirect('/');
-  },
-  processLogin: async(req,res)=>{
-    const errors = validationResult(req);
-
-    if(errors.isEmpty()){
-      // let users = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
-      // let userTologgin = users.find(user => user.email == req.body.email);
-      let userTologgin = await db.User.findOne({where:{email:req.body.email}})
-      if(userTologgin){
-        let passV = bcryptjs.compareSync(req.body.password, userTologgin.password);
-
-        if (passV) {
-          delete userTologgin.password;
-          req.session.userLogged = userTologgin;
-        
-          if (req.body.rememberme == "on") {
-            res.cookie('email', userTologgin.email, { maxAge: (60 * 1000) * 60 });
-          }
-        
-          return res.redirect('/users/profile');
-        } else {
-          return res.render('users/login', {
-            errors: {
-              password: {
-                msg: 'Credenciales inválidas'
-              }
-            },
-            old: req.body
-          });
-        }        
-      }
-      else{
-        return res.render('users/login', {
-          errors: {
-            email: {
-              msg: 'El correo ingresado no está registrado'
-            }
-          },
+  processRegister: async (req, res) => {
+    try {
+      const errors = validationResult(req);
+  
+      if (!errors.isEmpty()) {
+        return res.render('users/register', {
+          errors: errors.mapped(),
           old: req.body
-        });        
+        });
       }
-    } 
-    else{
-      return res.render('users/login', {
-        errors: errors.mapped(),
-        old: req.body
+  
+      const { nombre, apellido, email, telefono, password } = req.body;
+  
+      const nuevoUser = await db.User.create({
+        nombre,
+        apellido,
+        email,
+        telefono,
+        password: bcryptjs.hashSync(password, 10),
+        foto: req.file ? req.file.filename : null,
+        role: "user"
       });
+  
+      return res.redirect('/');
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Error al registrar usuario");
     }
   },
+
+  processLogin: async (req, res) => {
+    try {
+      const resultValidation = validationResult(req);
+  
+      if (resultValidation.isEmpty()) {
+        const userFound = await db.User.findOne({
+          where: { email: req.body.email },
+        });
+  
+        if (userFound) {
+          const passwordOk = bcryptjs.compareSync(
+            req.body.password,
+            userFound.password
+          );
+  
+          if (passwordOk) {
+            const userSession = { ...userFound.dataValues };
+            delete userSession.password;
+            req.session.userLogged = userSession;
+  
+            if (req.body.remember_me === "on") {
+              res.cookie("email", userFound.email, {
+                maxAge: 1000 * 60 * 60 * 24 * 7, 
+              });
+            }
+  
+            return res.redirect("/users/profile");
+          } else {
+            return res.render("users/login", {
+              errors: {
+                password: { msg: "Credenciales inválidas" },
+              },
+              old: req.body,
+            });
+          }
+        } else {
+          return res.render("users/login", {
+            errors: {
+              email: { msg: "El correo ingresado no está registrado" },
+            },
+            old: req.body,
+          });
+        }
+      } else {
+        return res.render("users/login", {
+          errors: resultValidation.mapped(),
+          old: req.body,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Error inesperado");
+    }
+  },
+  
   getProfile: (req,res)=>{
     res.render("users/profile", {user: req.session.userLogged});
   },
+
   logout: (req, res) => {
     res.clearCookie('email');
     req.session.destroy(err => {
@@ -93,6 +122,7 @@ module.exports={
       return res.redirect('/');
     });
   },  
+
   edit: async (req, res) => {
     const { id } = req.params;
     const user = await db.User.findByPk(id);
@@ -101,7 +131,7 @@ module.exports={
     }
     return res.status(404).render('not-found.ejs', { title: "Usuario inexistente" });
   },
-  
+
   update: async (req, res) => {
     try {
       const { id } = req.params;
@@ -123,14 +153,16 @@ module.exports={
   
       await user.save();
   
-      req.session.userLogged = user;
+      const userSession = { ...user.dataValues };
+      delete userSession.password;
+      req.session.userLogged = userSession;
   
       return res.redirect('/');
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error al actualizar usuario');
     }
-  },
+  },  
     
   destroy: async (req, res) => {
     try {

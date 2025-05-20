@@ -15,29 +15,21 @@
                 <h2 class="titulodestacados">Vehículos Destacados</h2>
             </div>
             <div class="container-card">
-                <div class="card">
-                    <img src="/img/modelo1741753380549.jpeg" style="width:100%">
-                    <h2>Peugeot 208 1.6</h2>
-                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$4500000</h3>
-                    <p>500 Km</p>
-                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
-                </div>
-
-                <div class="card">
-                    <img src="/img/modelo1741754591048.jpg" style="width:100%">
-                    <h2>Yamaha FZ X 150</h2>
-                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$5525000</h3>
-                    <p>0 km</p>
-                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
-                </div>
-
-                <div class="card">
-                    <img src="/img/cronos.jpg" style="width:100%">
-                    <h2>Fiat Cronos 1.3</h2>
-                    <h3 class="price" style="font-weight: 100; font-size: 20px;">$5250000</h3>
-                    <p>100.500 km</p>
-                    <p><button onclick="window.location.href='/products/detalle'">Ver más</button></p>
-                </div>
+                <% destacados.forEach(modelo => { %>
+                    <div class="card">
+                        <img src="/img/<%= modelo.imagen %>" style="width:100%">
+                        <h2><%= modelo.titulo %></h2>
+                        <h3 class="price" style="font-weight: 100; font-size: 20px;">
+                            $<%= modelo.precio %>
+                        </h3>
+                        <p><%= modelo.kilometraje %> km</p>
+                        <p>
+                            <button onclick="window.location.href='/products/detalle/<%= modelo.id %>'">
+                                Ver más
+                            </button>
+                        </p>
+                    </div>
+                <% }) %>                
             </div>
         </section>
         <section class="publicaciones">
@@ -68,7 +60,7 @@
                 </div>
             </div>
             <div class="container-card">
-                <% modelos.forEach(modelo => { %>
+                <% todos.forEach(modelo => { %>
                     <div class="card">
                         <img src="/img/<%= modelo.imagen %>" style="width:100%">
                         <h2><%= modelo.titulo %></h2>
