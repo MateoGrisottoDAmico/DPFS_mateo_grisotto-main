@@ -1,9 +1,9 @@
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "autonet_database",
-    "host": "127.0.0.1",
+    "username": "autonet_mateo",
+    "password": "hNvQyD5F#jgu6Nv",
+    "database": "autonet_digitalhouse",
+    "host": "mysql-autonet.alwaysdata.net",
     "dialect": "mysql"
   },
   "test": {

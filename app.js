@@ -31,10 +31,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(userLogged);
 
+const apiUsers = require('./routes/api/apiUsers.js');
+const apiAdmin = require('./routes/api/apiAdmin.js');
+
 app.use("/",indexRouter);
 app.use("/users",usersRouter);
 app.use("/products",productsRouter);
 app.use("/admin",adminRouter);
+
+app.use("/api/users",apiUsers);
+app.use("/api/admin",apiAdmin);
 
 app.use(function(req,res){
     res.status (404).render('not-found.ejs',{title: 'No encontrado'});

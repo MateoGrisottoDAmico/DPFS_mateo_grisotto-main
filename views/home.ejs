@@ -20,15 +20,15 @@
                         <img src="/img/<%= modelo.imagen %>" style="width:100%">
                         <h2><%= modelo.titulo %></h2>
                         <h3 class="price" style="font-weight: 100; font-size: 20px;">
-                            $<%= modelo.precio %>
+                            $<%= Number(modelo.precio).toLocaleString('es-AR') %>
                         </h3>
-                        <p><%= modelo.kilometraje %> km</p>
+                        <p><%= Number(modelo.kilometraje).toLocaleString('es-AR') %> km</p>
                         <p>
                             <button onclick="window.location.href='/products/detalle/<%= modelo.id %>'">
                                 Ver más
                             </button>
                         </p>
-                    </div>
+                    </div>                    
                 <% }) %>                
             </div>
         </section>
@@ -65,9 +65,9 @@
                         <img src="/img/<%= modelo.imagen %>" style="width:100%">
                         <h2><%= modelo.titulo %></h2>
                         <h3 class="price" style="font-weight: 100; font-size: 20px;">
-                            $<%= modelo.precio %>
+                            $<%= Number(modelo.precio).toLocaleString('es-AR') %>
                         </h3>
-                        <p><%= modelo.kilometraje %> km</p>
+                        <p><%= Number(modelo.kilometraje).toLocaleString('es-AR') %> km</p>
                         <p>
                             <button onclick="window.location.href='/products/detalle/<%= modelo.id %>'">
                                 Ver más
@@ -75,7 +75,7 @@
                         </p>
                     </div>
                 <% }) %>
-            </div>
+            </div>            
             <div class="cont-nav">
                 <div class="inner-nav">
                     <a href="" class="nav">1</a>

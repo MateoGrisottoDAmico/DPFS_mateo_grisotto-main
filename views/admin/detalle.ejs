@@ -15,7 +15,7 @@
             </div>
             <div class="cont-2">
                 <div class="inner-precio">
-                    <h2 class="precio">$<%= miModelo.precio%></h3>
+                    <h2 class="precio">$<%= miModelo.precio.toLocaleString('es-AR') %></h2>
                 </div>
                 <div class="inner-desc">
                     <div class="marca" style="display: flex; justify-content: center; align-items: baseline;">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="km" style="display: flex; justify-content: center; align-items: baseline;">
                         <h3 style="font-weight: 800; padding-right: 5px;">Kilometros:</h3>
-                        <h3><%= miModelo.kilometraje%></h3>
+                        <h3><%= miModelo.kilometraje.toLocaleString('es-AR') %> km</h3>
                     </div>
                     <div class="transm" style="display: flex; justify-content: center; align-items: baseline;">
                         <h3 style="font-weight: 800; padding-right: 5px;">Transmisión:</h3>
