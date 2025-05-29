@@ -1,6 +1,6 @@
 import './App.css'
-import { Dashboard } from './components/Dashboard'
-import { SideBar } from './components/SideBar'
+import { Dashboard } from './components/dashboard/Dashboard'
+import { SideBar } from './components/sidebar/SideBar'
 
 function App() {
   return (

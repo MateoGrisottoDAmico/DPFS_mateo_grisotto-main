@@ -1,0 +1,11 @@
+.sidebar img{
+    width: 200px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.sidebar{
+    border-right: 1mm solid white;
+}

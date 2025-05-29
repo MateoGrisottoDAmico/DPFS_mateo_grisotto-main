@@ -1,8 +1,8 @@
-import React from "react";
+import "./dashboard.css";
 
 export const Dashboard = () => {
     return (
-        <div>
+        <div className="dashboard">
             <h1>AutoNet</h1>
             <p>contenido</p>
         </div>
