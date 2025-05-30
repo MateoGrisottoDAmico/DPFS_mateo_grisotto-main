@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Categoria = sequelize.define("Categoria", {
     id: {
@@ -8,28 +10,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    createdAt: {
-      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
+      validate: {
+        notEmpty: true
+      }
     }
   }, {
     tableName: 'categorias',
-    timestamps: false
+    timestamps: true 
   });
 
-  Categoria.associate = (models)  =>{
-    
+  Categoria.associate = (models) => {
     Categoria.hasMany(models.Modelo, {
       foreignKey: 'categoria_id',
-      as: 'categoria'
+      as: 'modelos' 
     });
   };
 

@@ -7,7 +7,7 @@ const userLogged = require('./middlewares/userLogged.js');
 const port = 3000;
 const methodOverride = require('method-override');
 const db = require("./database/models");
-
+const cors = require('cors');
 // const morgan = require('morgan');
 // app.use(morgan('tiny'));
 
@@ -30,9 +30,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(userLogged);
+app.use(cors());
 
 const apiUsers = require('./routes/api/apiUsers.js');
 const apiAdmin = require('./routes/api/apiAdmin.js');
+const categoriesApiRoutes = require("./routes/api/apiCategories.js");
 
 app.use("/",indexRouter);
 app.use("/users",usersRouter);
@@ -41,6 +43,8 @@ app.use("/admin",adminRouter);
 
 app.use("/api/users",apiUsers);
 app.use("/api/admin",apiAdmin);
+app.use("/api/categories", categoriesApiRoutes);
+
 
 app.use(function(req,res){
     res.status (404).render('not-found.ejs',{title: 'No encontrado'});

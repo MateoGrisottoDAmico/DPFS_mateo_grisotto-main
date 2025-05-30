@@ -40,4 +40,26 @@ module.exports = {
       return res.status(500).send("Error al cargar el modelo");
     }
   },
+
+  lastProduct: async (req, res) => {
+    try {
+      const ultimoModelo = await db.Modelo.findOne({
+        order: [['createdAt', 'DESC']],
+        include: ['categoria', 'condicion'],
+        attributes: { exclude: ['categoria_id', 'condicion_id'] }
+      });
+
+      if (!ultimoModelo) {
+        return res.status(404).json({ error: "No hay productos" });
+      }
+
+      ultimoModelo.imagen = `http://localhost:3000/img/${ultimoModelo.imagen}`;
+      ultimoModelo.url = `http://localhost:3000/api/products/detalle/${ultimoModelo.id}`;
+
+      return res.json(ultimoModelo);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "Error al obtener último producto" });
+    }
+  }
 };

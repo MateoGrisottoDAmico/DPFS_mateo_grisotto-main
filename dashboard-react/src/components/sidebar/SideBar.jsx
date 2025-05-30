@@ -1,14 +1,27 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/Designer.png";
 import "./sidebar.css";
 
 export const SideBar = () => {
-    return <div className="sidebar">
-        <img src={logo} alt="logo"/>
-        <ul className="links">
-            <li><a href="">Catálogo</a></li>
-            <li><a href="">Ultima publicación</a></li>
-            <li><a href="">Categorías</a></li>
-            <li><a href="">Total de publicaciones</a></li>
-        </ul>
+  return (
+    <div className="sidebar">
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
+      <ul className="links">
+        <li>
+          <Link to="/catalogo">Catalogo</Link>
+        </li>
+        <li>
+          <Link to="/last-product">Ultimo Producto</Link>
+        </li>
+        <li>
+          <Link to="/counter">Counter</Link>
+        </li>
+      </ul>
     </div>
+  );
 };
+
+
+
